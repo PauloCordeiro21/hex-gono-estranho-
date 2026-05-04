@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Hexágono Perfeito em Contrapeso - Veloz</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Container que inclina a linha */
+        .balanco-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Velocidade aumentada: de 3s para 1.5s */
+            animation: balancar 1.5s ease-in-out infinite alternate;
+        }
+
+        .hexagono {
+            /* PROPORÇÕES PARA HEXÁGONO REGULAR */
+            width: 36px;  
+            height: 41.56px; 
+            
+            background-color: white;
+            /* Clip-path para formato hexagonal */
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            
+            /* Encostado na linha */
+            margin-bottom: 0;
+            
+            /* Velocidade aumentada: de 3s para 1.5s */
+            animation: rolarContrario 1.5s ease-in-out infinite alternate;
+        }
+
+        .linha {
+            width: 400px;
+            height: 3px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        /* Animação da Linha (Inclinação) */
+        @keyframes balancar {
+            0% { transform: rotate(-15deg); } 
+            100% { transform: rotate(15deg); } 
+        }
+
+        /* Animação do Hexágono (Deslocamento e Rotação) */
+        @keyframes rolarContrario {
+            0% {
+                transform: translateX(180px) rotate(360deg);
+            }
+            100% {
+                transform: translateX(-180px) rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="balanco-container">
+        <div class="hexagono"></div>
+        <div class="linha"></div>
+    </div>
+
+</body>
+</html>
