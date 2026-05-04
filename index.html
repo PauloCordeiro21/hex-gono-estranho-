@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Hexágono Perfeito em Contrapeso</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Container que inclina a linha */
+        .balanco-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: balancar 3s ease-in-out infinite alternate;
+        }
+
+        .hexagono {
+            /* PROPORÇÕES PARA HEXÁGONO REGULAR */
+            width: 36px;  /* Largura */
+            height: 41.56px; /* Altura = Largura * 1.1547 */
+            
+            background-color: white;
+            /* Clip-path ajustado para as novas proporções */
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            
+            /* Colado na linha */
+            margin-bottom: 0;
+            
+            /* Mantendo sua animação de contrapeso */
+            animation: rolarContrario 3s ease-in-out infinite alternate;
+        }
+
+        .linha {
+            width: 400px;
+            height: 3px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        /* Animação da Linha (Pai) */
+        @keyframes balancar {
+            0% { transform: rotate(-15deg); } 
+            100% { transform: rotate(15deg); } 
+        }
+
+        /* Animação do Hexágono (Filho) - Mantendo sua lógica */
+        @keyframes rolarContrario {
+            0% {
+                transform: translateX(180px) rotate(360deg);
+            }
+            100% {
+                transform: translateX(-180px) rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="balanco-container">
+        <div class="hexagono"></div>
+        <div class="linha"></div>
+    </div>
+
+</body>
+</html>
